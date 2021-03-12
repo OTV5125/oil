@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+#  web_api:
+#    build: web
+#    volumes:
+#      - ../app/:/var/www/html/
+#      - ./web/conf/:/etc/apache2/sites-available/
+#      - ./web/ssl/:/etc/ssl/
+#    ports:
+#    - 80:80
+#    - 443:443
+#    working_dir: /var/www/html/public/
+
+#  redis_api:
+#    build: redis
+#    ports:
+#      - 6379:6379
+
+  db_api:
+    build: db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+     -  ./:/root
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: oil
+    ports:
+      - 3306:3306
+    working_dir: /db
+
+#  composer_api:
+#    image: composer:2.0
+#    volumes:
+#    -  ./ssh/:/root/.ssh
+#    - ../app/:/var/www/html/
+#    working_dir: /var/www/html/
+#    command: composer update --ignore-platform-reqs
