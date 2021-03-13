@@ -1,0 +1,9 @@
+{
+  "Mysql" : {
+    "host": "db_api",
+    "user": "root",
+    "password": "example",
+    "db": "oil",
+    "charset":"utf8mb4"
+  }
+}
